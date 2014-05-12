@@ -81,9 +81,9 @@ function tom_image_grid_markup()
 {
         $out = <<<HTML
 
-<form id="imageDisplayOptions">
-    <label><input type="radio" name="imageDisplayOption" id="grid-display" /><span class="icon-grid">Grid</span></label>
-    <label><input type="radio" name="imageDisplayOption" id="line-display" /><span class="icon-line">Line</span></label>
+<form id="tom_ig_options">
+    <label><input type="radio" name="tom_ig_option" id="tom_ig_option--grid" /><span class="tom_ig_icon-grid">Grid</span></label>
+    <label><input type="radio" name="tom_ig_option" id="tom_ig_option--line" /><span class="tom_ig_icon-line">Line</span></label>
 </form>
 HTML;
 	echo $out;
@@ -93,40 +93,41 @@ function tom_image_grid_css()
 {
         $sortby = gTxt('sort_by');
         $out = <<<CSS
+
 <style type="text/css">
 /*
-** CSS for grid in textpattern image tab
+** CSS for tom_image_grid plugin
 ** By Sacripant — Thomas Jund
 ** http://sacripant.fr
 */
 
-.grid-display .txp-list * {
+.tom_ig .txp-list * {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.grid-display .txp-listtables {
+.tom_ig .txp-listtables {
     display: block;
 }
 
-.grid-display#page-image .txp-list thead th {
+.tom_ig#page-image .txp-list thead th {
     /*display: none;*/
     display: inline-block;
     position: relative;
     width: auto;
-
+    
 }
-.grid-display#page-image .txp-list thead th.images_detail {
+.tom_ig#page-image .txp-list thead th.images_detail {
     display: none !important;
 }
-.grid-display#page-image .txp-list thead th.multi-edit:after {
+.tom_ig#page-image .txp-list thead th.multi-edit:after {
     content: attr(title);
 }
 
-.grid-display#page-image .txp-list thead th.id {
+.tom_ig#page-image .txp-list thead th.id {
     margin-left: 1em;
 }
-.grid-display#page-image .txp-list thead th.id:before {
-    content: "{$sortby}";
+.tom_ig#page-image .txp-list thead th.id:before {
+    content: "Sort by";
     display: block;
     position: absolute;
     bottom: 100%;
@@ -136,14 +137,14 @@ function tom_image_grid_css()
 }
 
 
-.grid-display#page-image .txp-list tbody tr {
+.tom_ig#page-image .txp-list tbody tr {
     display: inline-block;
     /*vertical-align: mid;*/
     width: 15em;
     margin: .66em 1em 0 0
 }
 
-.grid-display#page-image .txp-list td {
+.tom_ig#page-image .txp-list td {
     display: block;
     padding: 0.16em 0.33em;
     text-overflow: ellipsis;
@@ -151,19 +152,19 @@ function tom_image_grid_css()
     white-space: nowrap;
 }
 
-.grid-display#page-image .txp-list td.multi-edit {
+.tom_ig#page-image .txp-list td.multi-edit {
     float: right;
     width: auto;
 }
-.grid-display#page-image .txp-list td.multi-edit input {
+.tom_ig#page-image .txp-list td.multi-edit input {
     margin-bottom: 0;
 }
 
-.grid-display#page-image .txp-list td.thumbnail {
+.tom_ig#page-image .txp-list td.thumbnail {
     height: 12em;
 }
 
-.grid-display#page-image .txp-list td.thumbnail img {
+.tom_ig#page-image .txp-list td.thumbnail img {
     max-width: 100%;
     max-height: 100%;
     height: auto;
@@ -171,7 +172,7 @@ function tom_image_grid_css()
 }
 
 @media only screen and (max-width: 480px) {
-    .grid-display#page-image .txp-list tbody tr {
+    .tom_ig#page-image .txp-list tbody tr {
         width: 140px;
         margin: .66em .33em 0 0;
     }
@@ -182,11 +183,11 @@ function tom_image_grid_css()
 /*buttons
 ----------*/
 
-#imageDisplayOptions input {
+#tom_ig_options input {
     display: none;
 }
 
-#imageDisplayOptions label {
+#tom_ig_options label {
     padding: .16em;
     display: inline-block;
     border: 1px solid transparent;
@@ -194,15 +195,16 @@ function tom_image_grid_css()
     height: 20px;
     overflow: hidden;
 }
-#imageDisplayOptions label.selected {
-    border-color: #aaa;
+#tom_ig_options label.selected {
+    border-color: #aaa; 
 }
-.icon-grid:before {
+.tom_ig_icon-grid:before {
     content: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIKCSBoZWlnaHQ9IjIwcHgiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjAgMjAiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8ZyBpZD0iZ3JpZCI+Cgk8Zz4KCQk8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iNS42MDEiIGhlaWdodD0iNS42Ii8+CgkJPHJlY3QgeD0iMyIgeT0iMTEuMzk5IiB3aWR0aD0iNS42MDEiIGhlaWdodD0iNS42MDEiLz4KCQk8cmVjdCB4PSIxMS4zOTkiIHk9IjExLjM5OSIgd2lkdGg9IjUuNjAxIiBoZWlnaHQ9IjUuNjAxIi8+CgkJPHJlY3QgeD0iMTEuMzk5IiB5PSIzIiB3aWR0aD0iNS42MDEiIGhlaWdodD0iNS42Ii8+Cgk8L2c+CjwvZz4KPC9zdmc+Cg==");
 }
-.icon-line:before {
+.tom_ig_icon-line:before {
     content: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIKCSBoZWlnaHQ9IjIwcHgiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjAgMjAiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8ZyBpZD0ibGluZSI+Cgk8cGF0aCBkPSJNMy44MTEsMTQuMTA3djIuODg5SDAuODQ0di0yLjg4OUgzLjgxMXogTTAuODQ0LDguNTU1djIuODg2aDIuOTY3VjguNTU1SDAuODQ0eiBNMTkuMTU1LDExLjQ0MVY4LjU1NUg2LjE2OXYyLjg4NkgxOS4xNTV6CgkJIE0xOS4xNTUsMTYuOTk2di0yLjg4OUg2LjE2OXYyLjg4OUgxOS4xNTV6IE0wLjg0NCwzdjIuODg5aDIuOTY3VjNIMC44NDR6IE0xOS4xNTUsNS44ODlWM0g2LjE2OXYyLjg4OUgxOS4xNTV6Ii8+CjwvZz4KPC9zdmc+Cg==");
 }
+
 </style>
 CSS;
 	echo $out;
@@ -213,12 +215,18 @@ function tom_image_grid_js()
     $out = <<<JS
 
 <script type="text/javascript">
+/*
+** JS for tom_image_grid plugin
+** By Sacripant — Thomas Jund
+** http://sacripant.fr
+*/
+
 $(function() {
-    var imageDisplayOption = $("#imageDisplayOptions")
+    var imageDisplayOption = $("#tom_ig_options")
     ,   radios = $('input', imageDisplayOption)
     ,   listtables = $('.txp-listtables')
     ,   imagesTr = $('tr', listtables)
-    ,   cookie = 'txp_ImageTabDisplay'
+    ,   cookie = 'tom_image_grid'
     ,   cookieValue = getCookie(cookie)
     ;
 
@@ -227,39 +235,35 @@ $(function() {
 
 
     // Change Layout when radio checked
-    radios.change(function(event)
+    radios.change(function(event) 
     {
-        if ( this.id === "grid-display")
+        if ( this.id === "tom_ig_option--grid")
         {
-            $('body').addClass('grid-display');
-            setCookie(cookie, 'grid-display')
+            $('body').addClass('tom_ig');
+            setCookie(cookie, 'tom_ig_option--grid');
         }
         else
         {
-            $('body').removeClass('grid-display');
-            setCookie(cookie, 'line-display')
+            $('body').removeClass('tom_ig');
+            setCookie(cookie, 'tom_ig_option--line')
         }
-
-        // console.log($(this).parent());
-        console.log( $(radios).filter(':checked') );
 
         radios.parent().removeClass('selected');
         $(this).parent().addClass('selected');
     });
 
     // Check & create cookie
-    if ( cookieValue )
+    if ( cookieValue ) 
     {
         var targetRadio = document.getElementById(cookieValue);
     }
     else
     {
-        var targetRadio = document.getElementById('line-display');
-        setCookie(cookie, 'line-display')
+        var targetRadio = document.getElementById('tom_ig_option--line');
+        setCookie(cookie, 'tom_ig_option--line')
     };
 
     $(targetRadio).prop('checked', true).trigger("change");
-
 });
 </script>
 

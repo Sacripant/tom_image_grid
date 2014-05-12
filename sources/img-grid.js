@@ -1,9 +1,15 @@
+/*
+** JS for tom_image_grid plugin
+** By Sacripant — Thomas Jund
+** http://sacripant.fr
+*/
+
 $(function() {
-    var imageDisplayOption = $("#imageDisplayOptions")
+    var imageDisplayOption = $("#tom_ig_options")
     ,   radios = $('input', imageDisplayOption)
     ,   listtables = $('.txp-listtables')
     ,   imagesTr = $('tr', listtables)
-    ,   cookie = 'txp_ImageTabDisplay'
+    ,   cookie = 'tom_image_grid'
     ,   cookieValue = getCookie(cookie)
     ;
 
@@ -14,19 +20,16 @@ $(function() {
     // Change Layout when radio checked
     radios.change(function(event) 
     {
-        if ( this.id === "grid-display")
+        if ( this.id === "tom_ig_option--grid")
         {
-            $('body').addClass('grid-display');
-            setCookie(cookie, 'grid-display')
+            $('body').addClass('tom_ig');
+            setCookie(cookie, 'tom_ig_option--grid');
         }
         else
         {
-            $('body').removeClass('grid-display');
-            setCookie(cookie, 'line-display')
+            $('body').removeClass('tom_ig');
+            setCookie(cookie, 'tom_ig_option--line')
         }
-
-        // console.log($(this).parent());
-        console.log( $(radios).filter(':checked') );
 
         radios.parent().removeClass('selected');
         $(this).parent().addClass('selected');
@@ -39,10 +42,9 @@ $(function() {
     }
     else
     {
-        var targetRadio = document.getElementById('line-display');
-        setCookie(cookie, 'line-display')
+        var targetRadio = document.getElementById('tom_ig_option--line');
+        setCookie(cookie, 'tom_ig_option--line')
     };
 
     $(targetRadio).prop('checked', true).trigger("change");
-
 });
