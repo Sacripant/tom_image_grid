@@ -72,7 +72,7 @@ if (!defined('txpinterface'))
 
 # --- BEGIN PLUGIN CODE ---
 if (@txpinterface == 'admin') {
-	register_callback( 'tom_image_grid_markup', "image");
+	register_callback( 'tom_image_grid_markup', 'image_ui', 'extend_controls');
 	register_callback( 'tom_image_grid_css', "image");
 	register_callback( 'tom_image_grid_js', "image");
 }
