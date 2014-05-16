@@ -17,7 +17,7 @@ $plugin['name'] = 'tom_image_grid';
 // 1 = Plugin help is in raw HTML.  Not recommended.
 # $plugin['allow_html_help'] = 1;
 
-$plugin['version'] = '0.1';
+$plugin['version'] = '0.2';
 $plugin['author'] = 'Thomas Jund';
 $plugin['author_uri'] = 'http://sacripant.fr';
 $plugin['description'] = 'An optionnal grid display for images tab';
@@ -275,7 +275,7 @@ if (0) {
 ?>
 <!--
 # --- BEGIN PLUGIN HELP ---
-h1. tom_image_grid
+h1. tom_image_grid 0.2
 
 p. _tom_image_grid_ is a plugin for "Textpattern 4.5.* CMS":textpattern. It allows a more compact display (as a grid) of the images list.
 
