@@ -1,0 +1,62 @@
+# Name: tom_image_grid v0.2 (compressed)
+# Type: Admin plugin
+# An optionnal grid display for images tab
+# Author: Thomas Jund
+# URL: http://sacripant.fr
+# Recommended load order: 5
+
+# .....................................................................
+# This is a plugin for Textpattern CMS - http://textpattern.com/
+# To install: textpattern > admin > plugins
+# Paste the following text into the 'Install plugin' box:
+# .....................................................................
+
+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
