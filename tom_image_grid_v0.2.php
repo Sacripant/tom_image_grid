@@ -119,21 +119,30 @@ function tom_image_grid_css()
 .tom_ig#page-image .txp-list thead th.images_detail {
     display: none !important;
 }
+.tom_ig#page-image .txp-list thead th.multi-edit {
+    margin-right: 1em;
+}
 .tom_ig#page-image .txp-list thead th.multi-edit:after {
     content: attr(title);
 }
 
 .tom_ig#page-image .txp-list thead th.id {
-    margin-left: 1em;
+    margin-left: 3.6em;
 }
 .tom_ig#page-image .txp-list thead th.id:before {
     content: "Sort by";
     display: block;
+    padding: inherit;
+    padding-left: 0;
+    padding-right: .33em;
+
     position: absolute;
-    bottom: 100%;
-    left: 0;
-    line-height: 2;
-    white-space: pre;
+    width: 3.6em;
+    right: 100%;
+    top: 0;
+
+    text-align: right;
+    font-weight: normal;
 }
 
 
@@ -170,6 +179,8 @@ function tom_image_grid_css()
     height: auto;
     width: auto;
 }
+
+
 
 @media only screen and (max-width: 480px) {
     .tom_ig#page-image .txp-list tbody tr {
