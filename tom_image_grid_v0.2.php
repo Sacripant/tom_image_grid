@@ -180,12 +180,36 @@ function tom_image_grid_css()
     width: auto;
 }
 
+/* No thumbnail display */
+.tom_ig .tom_ig--noThumb {
+    display: block;
+    background-color: #eee;
+    text-align: center;
+
+    height: 100%;
+    width: 100%;
+    border-width: 5.25em 5.5em;
+    border-style: solid;
+    border-top-color: #eee;
+    border-bottom-color: #eee;
+    border-left-color: #ddd;
+    border-right-color: #ddd;
+}
+
 
 
 @media only screen and (max-width: 480px) {
     .tom_ig#page-image .txp-list tbody tr {
         width: 140px;
         margin: .66em .33em 0 0;
+    }
+
+    .tom_ig#page-image .txp-list td.thumbnail {
+        height: 112px;
+    }
+
+    .tom_ig .tom_ig--noThumb {
+        border-width: 45px 40px;        
     }
 
 
@@ -236,10 +260,15 @@ $(function() {
     var imageDisplayOption = $("#tom_ig_options")
     ,   radios = $('input', imageDisplayOption)
     ,   listtables = $('.txp-listtables')
-    ,   imagesTr = $('tr', listtables)
+    /*,   imagesTr = $('tr', listtables)*/
     ,   cookie = 'tom_image_grid'
     ,   cookieValue = getCookie(cookie)
+    ,   noThumb = $('td.thumbnail a:not(:has(img))', listtables)
     ;
+
+
+    // Add .no-thumb class
+    noThumb.addClass('tom_ig--noThumb')
 
     // Add radios in tab
     imageDisplayOption.prependTo(listtables);
