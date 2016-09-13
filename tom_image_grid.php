@@ -124,6 +124,7 @@ function tom_image_grid_css()
 }
 .tom_ig#page-image .txp-list thead th.txp-list-col-multi-edit:after {
     content: attr(title);
+    padding-left: .33em;
 }
 
 .tom_ig#page-image .txp-list thead th.txp-list-col-id {
@@ -153,7 +154,8 @@ function tom_image_grid_css()
     margin: .66em 1em 0 0
 }
 
-.tom_ig#page-image .txp-list td {
+.tom_ig#page-image .txp-list tbody td,
+.tom_ig#page-image .txp-list tbody th {
     display: block;
     padding: 0.16em 0.33em;
     text-overflow: ellipsis;
