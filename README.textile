@@ -1,6 +1,6 @@
 h1. tom_image_grid
 
-p. _tom_image_grid_ is a plugin for "Textpattern 4.5.* CMS":textpattern. It allows a more compact display (as a grid) of the images list.
+p. _tom_image_grid_ is a plugin for "Textpattern CMS":http://textpattern.com. It allows a more compact display (as a grid) of the images list.
 
 p. The plugin adds two buttons in the Image Tab of your back-office allowing you to switch from the standard display to a more compact grid display.
 
@@ -8,11 +8,18 @@ p. The plugin adds two buttons in the Image Tab of your back-office allowing you
 
 h2. Changelog
 
+*0.4*
+
+* Textpattern 4.6.* compatibility
+* For Textpattern 4.6.* only
+
 *0.3*
 
+* For Textpattern 4.5.* only
 * bot_image_upload compatibility.
 * add a visual grey bloc if a image doesn't have thumbnail.
 
 
 *0.2*
+
 Initial release
