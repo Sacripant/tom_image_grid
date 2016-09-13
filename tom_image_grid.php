@@ -72,27 +72,27 @@ if (!defined('txpinterface'))
 
 # --- BEGIN PLUGIN CODE ---
 if (@txpinterface == 'admin') {
-	register_callback( 'tom_image_grid_markup', 'image_ui', 'extend_controls');
-	register_callback( 'tom_image_grid_css', "image");
-	register_callback( 'tom_image_grid_js', "image");
+    register_callback( 'tom_image_grid_markup', 'image_ui', 'extend_controls');
+    register_callback( 'tom_image_grid_css', "image");
+    register_callback( 'tom_image_grid_js', "image");
 }
 
 function tom_image_grid_markup()
 {
-        $out = <<<HTML
+    $out = <<<HTML
 
 <form id="tom_ig_options">
     <label><input type="radio" name="tom_ig_option" id="tom_ig_option--grid" /><span class="tom_ig_icon-grid">Grid</span></label>
     <label><input type="radio" name="tom_ig_option" id="tom_ig_option--line" /><span class="tom_ig_icon-line">Line</span></label>
 </form>
 HTML;
-	echo $out;
+    echo $out;
 }
 
 function tom_image_grid_css()
 {
-        $sortby = gTxt('sort_by');
-        $out = <<<CSS
+    $sortby = gTxt('sort_by');
+    $out = <<<CSS
 
 <style type="text/css">
 /*
@@ -242,7 +242,7 @@ function tom_image_grid_css()
 
 </style>
 CSS;
-	echo $out;
+    echo $out;
 }
 
 function tom_image_grid_js()
