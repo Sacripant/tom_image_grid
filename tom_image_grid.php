@@ -265,12 +265,8 @@ $(function() {
     /*,   imagesTr = $('tr', listtables)*/
     ,   cookie = 'tom_image_grid'
     ,   cookieValue = getCookie(cookie)
-    ,   noThumb = $('td.txp-list-col-thumbnail a:not(:has(img))', listtables)
     ;
 
-
-    // Add .no-thumb class
-    noThumb.addClass('tom_ig--noThumb')
 
     // Add radios in tab
     imageDisplayOption.prependTo(listtables);
