@@ -17,7 +17,7 @@ $plugin['name'] = 'tom_image_grid';
 // 1 = Plugin help is in raw HTML.  Not recommended.
 # $plugin['allow_html_help'] = 1;
 
-$plugin['version'] = '0.3';
+$plugin['version'] = '0.4';
 $plugin['author'] = 'Thomas Jund';
 $plugin['author_uri'] = 'http://sacripant.fr';
 $plugin['description'] = 'An optionnal grid display for images tab';
@@ -72,27 +72,27 @@ if (!defined('txpinterface'))
 
 # --- BEGIN PLUGIN CODE ---
 if (@txpinterface == 'admin') {
-	register_callback( 'tom_image_grid_markup', 'image_ui', 'extend_controls');
-	register_callback( 'tom_image_grid_css', "image");
-	register_callback( 'tom_image_grid_js', "image");
+    register_callback( 'tom_image_grid_markup', 'image_ui', 'extend_controls');
+    register_callback( 'tom_image_grid_css', "image");
+    register_callback( 'tom_image_grid_js', "image");
 }
 
 function tom_image_grid_markup()
 {
-        $out = <<<HTML
+    $out = <<<HTML
 
 <form id="tom_ig_options">
     <label><input type="radio" name="tom_ig_option" id="tom_ig_option--grid" /><span class="tom_ig_icon-grid">Grid</span></label>
     <label><input type="radio" name="tom_ig_option" id="tom_ig_option--line" /><span class="tom_ig_icon-line">Line</span></label>
 </form>
 HTML;
-	echo $out;
+    echo $out;
 }
 
 function tom_image_grid_css()
 {
-        $sortby = gTxt('sort_by');
-        $out = <<<CSS
+    $sortby = gTxt('sort_by');
+    $out = <<<CSS
 
 <style type="text/css">
 /*
@@ -119,17 +119,18 @@ function tom_image_grid_css()
 .tom_ig#page-image .txp-list thead th.images_detail {
     display: none !important;
 }
-.tom_ig#page-image .txp-list thead th.multi-edit {
+.tom_ig#page-image .txp-list thead th.txp-list-col-multi-edit {
     margin-right: 1em;
 }
-.tom_ig#page-image .txp-list thead th.multi-edit:after {
+.tom_ig#page-image .txp-list thead th.txp-list-col-multi-edit:after {
     content: attr(title);
+    padding-left: .33em;
 }
 
-.tom_ig#page-image .txp-list thead th.id {
+.tom_ig#page-image .txp-list thead th.txp-list-col-id {
     margin-left: 3.6em;
 }
-.tom_ig#page-image .txp-list thead th.id:before {
+.tom_ig#page-image .txp-list thead th.txp-list-col-id:before {
     content: "Sort by";
     display: block;
     padding: inherit;
@@ -153,7 +154,8 @@ function tom_image_grid_css()
     margin: .66em 1em 0 0
 }
 
-.tom_ig#page-image .txp-list td {
+.tom_ig#page-image .txp-list tbody td,
+.tom_ig#page-image .txp-list tbody th {
     display: block;
     padding: 0.16em 0.33em;
     text-overflow: ellipsis;
@@ -161,19 +163,19 @@ function tom_image_grid_css()
     white-space: nowrap;
 }
 
-.tom_ig#page-image .txp-list td.multi-edit {
+.tom_ig#page-image .txp-list td.txp-list-col-multi-edit {
     float: right;
     width: auto;
 }
-.tom_ig#page-image .txp-list td.multi-edit input {
+.tom_ig#page-image .txp-list td.txp-list-col-multi-edit input {
     margin-bottom: 0;
 }
 
-.tom_ig#page-image .txp-list td.thumbnail {
+.tom_ig#page-image .txp-list td.txp-list-col-thumbnail {
     height: 12em;
 }
 
-.tom_ig#page-image .txp-list td.thumbnail img {
+.tom_ig#page-image .txp-list td.txp-list-col-thumbnail img {
     max-width: 100%;
     max-height: 100%;
     height: auto;
@@ -181,7 +183,7 @@ function tom_image_grid_css()
 }
 
 /* No thumbnail display */
-.tom_ig .tom_ig--noThumb {
+.tom_ig#page-image .txp-list td.txp-list-col-thumbnail:not(.has-thumbnail) {
     display: block;
     background-color: #eee;
     text-align: center;
@@ -242,7 +244,7 @@ function tom_image_grid_css()
 
 </style>
 CSS;
-	echo $out;
+    echo $out;
 }
 
 function tom_image_grid_js()
@@ -263,12 +265,8 @@ $(function() {
     /*,   imagesTr = $('tr', listtables)*/
     ,   cookie = 'tom_image_grid'
     ,   cookieValue = getCookie(cookie)
-    ,   noThumb = $('td.thumbnail a:not(:has(img))', listtables)
     ;
 
-
-    // Add .no-thumb class
-    noThumb.addClass('tom_ig--noThumb')
 
     // Add radios in tab
     imageDisplayOption.prependTo(listtables);
@@ -315,9 +313,9 @@ if (0) {
 ?>
 <!--
 # --- BEGIN PLUGIN HELP ---
-h1. tom_image_grid 0.3
+h1. tom_image_grid 0.4
 
-p. _tom_image_grid_ is a plugin for "Textpattern 4.5.* CMS":textpattern. It allows a more compact display (as a grid) of the images list.
+p. _tom_image_grid_ is a plugin for Textpattern 4.6.* CMS. It allows a more compact display (as a grid) of the images list.
 
 p. The plugin adds two buttons 
 !data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIKCSBoZWlnaHQ9IjIwcHgiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjAgMjAiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8ZyBpZD0iZ3JpZCI+Cgk8Zz4KCQk8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iNS42MDEiIGhlaWdodD0iNS42Ii8+CgkJPHJlY3QgeD0iMyIgeT0iMTEuMzk5IiB3aWR0aD0iNS42MDEiIGhlaWdodD0iNS42MDEiLz4KCQk8cmVjdCB4PSIxMS4zOTkiIHk9IjExLjM5OSIgd2lkdGg9IjUuNjAxIiBoZWlnaHQ9IjUuNjAxIi8+CgkJPHJlY3QgeD0iMTEuMzk5IiB5PSIzIiB3aWR0aD0iNS42MDEiIGhlaWdodD0iNS42Ii8+Cgk8L2c+CjwvZz4KPC9zdmc+Cg==! !data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIKCSBoZWlnaHQ9IjIwcHgiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjAgMjAiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8ZyBpZD0ibGluZSI+Cgk8cGF0aCBkPSJNMy44MTEsMTQuMTA3djIuODg5SDAuODQ0di0yLjg4OUgzLjgxMXogTTAuODQ0LDguNTU1djIuODg2aDIuOTY3VjguNTU1SDAuODQ0eiBNMTkuMTU1LDExLjQ0MVY4LjU1NUg2LjE2OXYyLjg4NkgxOS4xNTV6CgkJIE0xOS4xNTUsMTYuOTk2di0yLjg4OUg2LjE2OXYyLjg4OUgxOS4xNTV6IE0wLjg0NCwzdjIuODg5aDIuOTY3VjNIMC44NDR6IE0xOS4xNTUsNS44ODlWM0g2LjE2OXYyLjg4OUgxOS4xNTV6Ii8+CjwvZz4KPC9zdmc+Cg==!
