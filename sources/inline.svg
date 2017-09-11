@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px"
-	 height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20">
 <g id="line">
-	<path d="M3.811,14.107v2.889H0.844v-2.889H3.811z M0.844,8.555v2.886h2.967V8.555H0.844z M19.155,11.441V8.555H6.169v2.886H19.155z
-		 M19.155,16.996v-2.889H6.169v2.889H19.155z M0.844,3v2.889h2.967V3H0.844z M19.155,5.889V3H6.169v2.889H19.155z"/>
+    <rect x="1" y="15" width="3" height="3"/>
+    <rect x="1" y="9"  width="3" height="3"/>
+    <rect x="1" y="3"  width="3" height="3"/>
+    <rect x="6" y="15" width="13" height="3"/>
+    <rect x="6" y="9"  width="13" height="3"/>
+    <rect x="6" y="3"  width="13" height="3"/>
 </g>
 </svg>
