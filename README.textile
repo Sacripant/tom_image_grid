@@ -8,6 +8,11 @@ p. The plugin adds two buttons in the Image Tab of your back-office allowing you
 
 h2. Changelog
 
+*0.4.1*
+
+* Compatibility with other plugins that use @.txp-listtables@ element in images tab (as "smd_thumbnail":https://github.com/Bloke). Thanks to "Bloke":https://github.com/Bloke)
+* Some CSS and SVG optimisations
+
 *0.4*
 
 * Textpattern 4.6.* compatibility
