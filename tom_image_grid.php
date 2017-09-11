@@ -261,7 +261,7 @@ function tom_image_grid_js()
 $(function() {
     var imageDisplayOption = $("#tom_ig_options")
     ,   radios = $('input', imageDisplayOption)
-    ,   listtables = $('.txp-listtables')
+    ,   listtables = $('#images_form .txp-listtables')
     /*,   imagesTr = $('tr', listtables)*/
     ,   cookie = 'tom_image_grid'
     ,   cookieValue = getCookie(cookie)
