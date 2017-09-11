@@ -235,6 +235,10 @@ function tom_image_grid_css()
 #tom_ig_options label.selected {
     border-color: #aaa; 
 }
+#tom_ig_options label:not(.selected):hover {
+    cursor: pointer;
+    background-color: #eee;
+}
 .tom_ig_icon-grid:before {
     content: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIyMHB4IiBoZWlnaHQ9IjIwcHgiIHZpZXdCb3g9IjAgMCAyMCAyMCI+DQo8ZyBpZD0iZ3JpZCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICMzMzMiPg0KICAgIDxyZWN0IHg9IjMiICB5PSIzIiAgd2lkdGg9IjYiIGhlaWdodD0iNiIvPg0KICAgIDxyZWN0IHg9IjMiICB5PSIxMiIgd2lkdGg9IjYiIGhlaWdodD0iNiIvPg0KICAgIDxyZWN0IHg9IjEyIiB5PSIxMiIgd2lkdGg9IjYiIGhlaWdodD0iNiIvPg0KICAgIDxyZWN0IHg9IjEyIiB5PSIzIiAgd2lkdGg9IjYiIGhlaWdodD0iNiIvPg0KPC9nPg0KPC9zdmc+DQo=");
 }
