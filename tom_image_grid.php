@@ -17,7 +17,7 @@ $plugin['name'] = 'tom_image_grid';
 // 1 = Plugin help is in raw HTML.  Not recommended.
 # $plugin['allow_html_help'] = 1;
 
-$plugin['version'] = '0.4.1';
+$plugin['version'] = '0.4.2';
 $plugin['author'] = 'Thomas Jund';
 $plugin['author_uri'] = 'http://sacripant.fr';
 $plugin['description'] = 'An optionnal grid display for images tab';
@@ -77,7 +77,7 @@ if (@txpinterface == 'admin') {
     register_callback( 'tom_image_grid_js', "image");
 }
 
-function tom_image_grid_markup()
+function tom_image_grid_markup($event, $step, $default)
 {
     $out = <<<HTML
 
@@ -86,7 +86,7 @@ function tom_image_grid_markup()
     <label><input type="radio" name="tom_ig_option" id="tom_ig_option--line" /><span class="tom_ig_icon-line">Line</span></label>
 </form>
 HTML;
-    echo $out;
+    echo $default.$out;
 }
 
 function tom_image_grid_css()
@@ -95,6 +95,7 @@ function tom_image_grid_css()
     $out = <<<CSS
 
 <style type="text/css">
+
 /*
 ** CSS for tom_image_grid plugin
 ** By Sacripant — Thomas Jund
@@ -143,6 +144,7 @@ function tom_image_grid_css()
     top: 0;
 
     text-align: right;
+
     font-weight: normal;
 }
 
