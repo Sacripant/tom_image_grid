@@ -17,7 +17,7 @@ $plugin['name'] = 'tom_image_grid';
 // 1 = Plugin help is in raw HTML.  Not recommended.
 # $plugin['allow_html_help'] = 1;
 
-$plugin['version'] = '0.4.1';
+$plugin['version'] = '0.4.2';
 $plugin['author'] = 'Thomas Jund';
 $plugin['author_uri'] = 'http://sacripant.fr';
 $plugin['description'] = 'An optionnal grid display for images tab';
